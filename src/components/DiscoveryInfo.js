@@ -1,6 +1,9 @@
 import React from 'react'
 import { Row, Col } from 'antd'
-import { getYear } from '../util/helpers'
+import { getYear, handleOverview } from '../util/helpers'
+import { imgSize } from '../util/constants'
+
+let movies
 
 const DiscoveryInfo = props => (
     <div>
@@ -13,14 +16,40 @@ const DiscoveryInfo = props => (
             }
         </Row>
 
-        <Row>
-            <Col span={24}>
-                {props.results.map(m => (
-                    <h3 key={m.id}>
-                        {m.title} {getYear(m.release_date)}
-                    </h3>
-                ))}
-            </Col>
+        <Row style={{ marginTop: 20 }} gutter={8}>
+            {movies = props.results.map(m => {
+                if (m.poster_path !== null) {
+                    return (
+                        <Col
+                            key={m.id}
+                            lg={12}
+                            xs={24}
+                            style={{ marginBottom: 20 }}>
+                            <Row>
+                                <Col
+                                    lg={10}>
+                                    <img
+                                        src={`${imgSize.w185}${m.poster_path}`}
+                                        style={{ maxHeight: 240 }}
+                                        alt={m.title} />
+                                </Col>
+                                <Col
+                                    style={{ marginTop: 10 }}
+                                    xs={24}
+                                    lg={14}>
+                                    <h3>{m.title}</h3>
+                                    <p>
+                                        {getYear(m.release_date)}
+                                    </p>
+                                    <p>{handleOverview(m.overview)}</p>
+                                </Col>
+                            </Row>
+                        </Col>
+                    )
+                }
+                return movies
+            })
+            }
         </Row>
     </div>
 )

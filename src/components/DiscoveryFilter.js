@@ -1,29 +1,46 @@
 import React from 'react'
-import { Row, Col, Select, Spin, Button } from 'antd'
+import { Row, Col, Select, Spin } from 'antd'
 
 const Option = Select.Option;
+
+const handleYears = (range = 1900) => {
+    let time = new Date();
+    let years = [];
+
+    for (let i = time.getFullYear(); i >= range; i--) {
+        years.push(i);
+    }
+
+    return years.map((v, i) => {
+        return <Option key={i} value={v}>{v}</Option>
+    })
+}
 
 const DiscoveryFilter = props => (
     <div>
         <Row gutter={16} style={{ margin: '20px 0px 20px 0px' }}>
-            <Col span={4} >
+            <Col lg={6} xs={24}>
+                <span><small>Year</small></span>
                 <Select
                     style={{ width: '100%' }}
                     placeholder="Select"
                     onChange={props.handleYearChange}
                     size="large"
+                    defaultValue={props.data.year}
                     allowClear
                 >
-                    {props.handleYears()}
+                    {handleYears()}
                 </Select>
             </Col>
-            <Col span={6} >
+            <Col lg={6} xs={24}>
+                <span><small>Sort By</small></span>
                 <Select
                     style={{ width: '100%' }}
                     placeholder="Select"
                     onChange={props.handleSortByChange}
                     size="large"
                     allowClear
+                    defaultValue={props.data.sortBy}
                 >
                     <Option value="popularity.desc">Popularity Descending</Option>
                     <Option value="popularity.asc">Popularity Ascending</Option>
@@ -35,7 +52,8 @@ const DiscoveryFilter = props => (
                     <Option value="title.desc">Title (Z-A)</Option>
                 </Select>
             </Col>
-            <Col span={6} >
+            <Col lg={6} xs={24}>
+                <span><small>Genres</small></span>
                 <Select
                     allowClear
                     mode="tags"
@@ -64,8 +82,10 @@ const DiscoveryFilter = props => (
                     <Option value="37">Western</Option>
                 </Select>
             </Col>
-            <Col span={6} >
+            <Col lg={6} xs={24}>
+                <span><small>Cast</small></span>
                 <Select
+                    allowClear
                     mode="multiple"
                     labelInValue
                     value={props.data.castValue}
@@ -84,8 +104,10 @@ const DiscoveryFilter = props => (
             </Col>
         </Row>
         <Row gutter={16} style={{ margin: '20px 0px 20px 0px' }}>
-            <Col span={6}>
+            <Col lg={6} xs={24}>
+                <span><small>Keywords</small></span>
                 <Select
+                    allowClear
                     mode="multiple"
                     labelInValue
                     value={props.data.keywordsValue}
@@ -101,15 +123,6 @@ const DiscoveryFilter = props => (
                         <Option key={k.value} value={k.value}>{k.text}</Option>)
                     }
                 </Select>
-            </Col>
-            <Col span={4}>
-                <Button
-                    type="primary"
-                    size="large"
-                    icon="search"
-                    onClick={props.fetch}>
-                    Search
-                        </Button>
             </Col>
         </Row>
     </div>

@@ -2,7 +2,7 @@ import type from '../types/DiscoveryTypes'
 
 const initialState = {
     loaded: false,
-    year: '',
+    year: (new Date()).getFullYear(),
     sortBy: 'popularity.desc',
     page: 1,
     nextPage: false,
