@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Icon } from 'antd'
-import * as DiscoveryActions from '../actions/DiscoveryActions'
-import debounce from 'lodash/debounce';
+import * as Actions from '../actions/DiscoveryActions'
+import debounce from 'lodash/debounce'
 import DiscoveryInfo from './DiscoveryInfo'
-import DiscoveryFilter from './DiscoveryFilter';
+import DiscoveryFilter from './DiscoveryFilter'
 
 class Discovery extends Component {
 
@@ -15,38 +16,36 @@ class Discovery extends Component {
         this.fetchKeywords = debounce(this.fetchKeywords, 800);
     }
 
-    componentDidMount() {
-        this.fetch()
-    }
+    componentDidMount = () => this.fetch()
 
-    fetch = () => this.props.fetch(this.props.data)
+    fetch = () => this.props.actions.fetch(this.props.data)
 
-    fetchCast = value => this.props.fetchCast(value)
+    fetchCast = value => this.props.actions.fetchCast(value)
 
-    fetchKeywords = value => this.props.fetchKeywords(value)
+    fetchKeywords = value => this.props.actions.fetchKeywords(value)
 
     handleKeywordsChange = value => {
-        this.props.keywords(value)
+        this.props.actions.keywords(value)
         this.fetch()
     }
 
     handleCastChange = value => {
-        this.props.cast(value)
+        this.props.actions.cast(value)
         this.fetch()
     }
 
     handleSortByChange = value => {
-        this.props.sortBy(value)
+        this.props.actions.sortBy(value)
         this.fetch()
     }
 
     handleYearChange = value => {
-        this.props.year(value)
+        this.props.actions.year(value)
         this.fetch()
     }
 
     handleGenresChange = value => {
-        this.props.genres(value)
+        this.props.actions.genres(value)
         this.fetch()
     }
 
@@ -84,4 +83,8 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps, DiscoveryActions)(Discovery)
+const mapDispatchToProps = dispatch => ({
+    actions: bindActionCreators(Actions, dispatch)
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Discovery)
