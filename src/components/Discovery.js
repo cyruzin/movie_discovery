@@ -66,7 +66,10 @@ class Discovery extends Component {
                     data={this.props.data}
                 />
                 {this.props.data.loaded ?
-                    <DiscoveryInfo results={this.props.data.results} /> : null
+                    <DiscoveryInfo
+                        results={this.props.data.results}
+                        data={this.props.data} />
+                    : null
                 }
             </div>
 

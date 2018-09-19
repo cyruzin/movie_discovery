@@ -3,7 +3,10 @@ import type from '../types/DiscoveryTypes'
 import { apiKey } from '../util/constants'
 
 export const fetch = payload => {
-    const { page, sortBy, year, genres, castValue, keywordsValue, loaded } = payload
+    const {
+        page, sortBy, year, genres,
+        castValue, keywordsValue, loaded, hasErrors
+    } = payload
 
     const g = genres.join(',')
     const c = castValue.map(cast => cast.key).join(',')
@@ -13,6 +16,10 @@ export const fetch = payload => {
 
         if (loaded) {
             dispatch({ type: type.LOADED, loaded: false })
+        }
+
+        if (hasErrors) {
+            dispatch({ type: type.ERRORS, errors: '', hasErrors: false })
         }
 
         axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=${sortBy}&include_adult=false&include_video=false&with_genres=${g}&with_cast=${c}&with_keywords=${k}&year=${year}&page=${page}`)
@@ -26,7 +33,9 @@ export const fetch = payload => {
                 })
                 dispatch({ type: type.LOADED, loaded: true })
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                dispatch({ type: type.ERRORS, errors: err, hasErrors: true })
+            })
     }
 }
 
@@ -45,7 +54,9 @@ export const fetchCast = payload => {
                 dispatch({ type: type.CAST, cast: cast })
                 dispatch({ type: type.LOADED_CAST, loadedCast: false })
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                dispatch({ type: type.ERRORS, errors: err, hasErrors: true })
+            })
     }
 }
 
@@ -64,7 +75,9 @@ export const fetchKeywords = payload => {
                 dispatch({ type: type.KEYWORDS, keywords: keywords })
                 dispatch({ type: type.LOADED_KEYWORDS, loadedKeywords: false })
             })
-            .catch(err => console.log(err))
+            .catch(err => {
+                dispatch({ type: type.ERRORS, errors: err, hasErrors: true })
+            })
     }
 }
 

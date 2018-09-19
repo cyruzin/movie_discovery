@@ -4,13 +4,24 @@ import { getYear } from '../util/helpers'
 
 const DiscoveryInfo = props => (
     <div>
-        {props.results.map(m => (
-            <Row>
+        <Row>
+            {props.data.hasErrors ?
                 <Col span={24}>
-                    <h3 key={m.id}>{m.title} ({getYear(m.release_date)})</h3>
+                    <h3>{props.data.errors}</h3>
                 </Col>
-            </Row>
-        ))}
+                : null
+            }
+        </Row>
+
+        <Row>
+            <Col span={24}>
+                {props.results.map(m => (
+                    <h3 key={m.id}>
+                        {m.title} {getYear(m.release_date)}
+                    </h3>
+                ))}
+            </Col>
+        </Row>
     </div>
 )
 

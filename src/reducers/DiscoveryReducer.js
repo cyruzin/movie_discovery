@@ -18,6 +18,7 @@ const initialState = {
     castValue: [],
     genres: [],
     results: [],
+    hasErrors: false,
     errors: ''
 }
 
@@ -82,6 +83,12 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 loadedKeywords: action.loadedKeywords
+            }
+        case type.ERRORS:
+            return {
+                ...state,
+                errors: action.errors,
+                hasErrors: action.hasErrors
             }
         default:
             return state
