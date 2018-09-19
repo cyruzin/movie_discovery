@@ -50,7 +50,7 @@ export default (state = initialState, action) => {
         case type.GENRES:
             return {
                 ...state,
-                genres: [...state.genres, action.genres]
+                genres: action.genres
             }
         case type.CAST:
             return {
