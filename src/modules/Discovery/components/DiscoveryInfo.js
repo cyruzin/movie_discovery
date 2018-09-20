@@ -1,7 +1,7 @@
 import React from 'react'
 import { Row, Col } from 'antd'
-import { getYear, handleOverview } from '../util/helpers'
-import { imgSize } from '../util/constants'
+import { getYear, handleOverview } from '../../../util/helpers'
+import { imgSize } from '../../../util/constants'
 
 let movies
 

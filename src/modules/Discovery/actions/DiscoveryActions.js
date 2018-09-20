@@ -1,6 +1,6 @@
 import axios from 'axios'
 import type from '../types/DiscoveryTypes'
-import { apiKey } from '../util/constants'
+import { apiKey } from '../../../util/constants'
 
 export const fetch = payload => {
     const {
