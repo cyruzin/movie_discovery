@@ -51,7 +51,6 @@ class Discovery extends Component {
 
 
     render() {
-
         return (
             <div>
                 <DiscoveryFilter
