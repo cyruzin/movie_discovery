@@ -7,7 +7,7 @@ export const fetch = payload => {
         page, sortBy, year, genres,
         castValue, keywordsValue, loaded, hasErrors
     } = payload
-
+    console.log(year)
     const g = genres.join(',')
     const c = castValue.map(cast => cast.key).join(',')
     const k = keywordsValue.map(keyword => keyword.key).join(',')

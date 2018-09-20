@@ -19,7 +19,7 @@ const handleYears = (range = 1900) => {
 const DiscoveryFilter = props => (
     <div>
         <Row gutter={16} style={{ margin: '20px 0px 20px 0px' }}>
-            <Col lg={6} xs={24}>
+            <Col lg={3} xs={24}>
                 <span><small>Year</small></span>
                 <Select
                     style={{ width: '100%' }}
@@ -52,12 +52,12 @@ const DiscoveryFilter = props => (
                     <Option value="title.desc">Title (Z-A)</Option>
                 </Select>
             </Col>
-            <Col lg={6} xs={24}>
+            <Col lg={7} xs={24}>
                 <span><small>Genres</small></span>
                 <Select
                     allowClear
                     mode="tags"
-                    placeholder="Genres"
+                    placeholder="Select Genres"
                     size="large"
                     style={{ width: '100%' }}
                     onChange={props.handleGenresChange}>
@@ -82,7 +82,7 @@ const DiscoveryFilter = props => (
                     <Option value="37">Western</Option>
                 </Select>
             </Col>
-            <Col lg={6} xs={24}>
+            <Col lg={8} xs={24}>
                 <span><small>Cast</small></span>
                 <Select
                     allowClear
@@ -90,7 +90,7 @@ const DiscoveryFilter = props => (
                     labelInValue
                     value={props.data.castValue}
                     size="large"
-                    placeholder="Cast"
+                    placeholder="Ex: Tom Cruise"
                     notFoundContent={props.data.loadedCast ? <Spin size="small" /> : null}
                     filterOption={false}
                     onSearch={props.fetchCast}
@@ -102,8 +102,6 @@ const DiscoveryFilter = props => (
                     }
                 </Select>
             </Col>
-        </Row>
-        <Row gutter={16} style={{ margin: '20px 0px 20px 0px' }}>
             <Col lg={6} xs={24}>
                 <span><small>Keywords</small></span>
                 <Select
@@ -112,7 +110,7 @@ const DiscoveryFilter = props => (
                     labelInValue
                     value={props.data.keywordsValue}
                     size="large"
-                    placeholder="Keywords"
+                    placeholder="Ex: war"
                     notFoundContent={props.data.loadedKeywords ? <Spin size="small" /> : null}
                     filterOption={false}
                     onSearch={props.fetchKeywords}
