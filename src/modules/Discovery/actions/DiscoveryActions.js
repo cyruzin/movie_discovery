@@ -82,16 +82,10 @@ export const fetchKeywords = payload => {
 }
 
 export const year = value => {
-    if (value === undefined) {
-        value = (new Date()).getFullYear()
-    }
     return { type: type.YEAR, year: value }
 }
 
 export const sortBy = value => {
-    if (value === undefined) {
-        value = 'popularity.desc'
-    }
     return { type: type.SORT_BY, sortBy: value }
 }
 

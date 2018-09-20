@@ -1,6 +1,6 @@
 import React from 'react'
 import { Layout, Menu, Icon } from 'antd';
-import Discovery from '../modules/discovery/components/Discovery'
+import Discovery from '../modules/Discovery/components/Discovery'
 
 const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;

@@ -4,7 +4,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux'
 import ReduxThunk from 'redux-thunk'
 import './App.css'
 import AppLayout from './layout/AppLayout'
-import DiscoveryReducer from './modules/discovery/reducers/DiscoveryReducer'
+import DiscoveryReducer from './modules/Discovery/reducers/DiscoveryReducer'
 
 const reducers = combineReducers({
   discovery: DiscoveryReducer

@@ -21,27 +21,17 @@ const DiscoveryInfo = props => (
                 movies = props.results.map(m => {
                     if (m.poster_path !== null) {
                         return (
-                            <Col
-                                key={m.id}
-                                lg={12}
-                                xs={24}
-                                style={{ marginBottom: 20 }}>
+                            <Col key={m.id} lg={12} xs={24} style={{ marginBottom: 20 }}>
                                 <Row>
-                                    <Col
-                                        lg={10}>
+                                    <Col lg={10}>
                                         <img
                                             src={`${imgSize.w185}${m.poster_path}`}
                                             style={{ maxHeight: 240 }}
                                             alt={m.title} />
                                     </Col>
-                                    <Col
-                                        style={{ marginTop: 10 }}
-                                        xs={24}
-                                        lg={14}>
+                                    <Col style={{ marginTop: 10 }} xs={24} lg={14}>
                                         <h3>{m.title}</h3>
-                                        <p>
-                                            {getYear(m.release_date)}
-                                        </p>
+                                        <p>{getYear(m.release_date)}</p>
                                         <p>{handleOverview(m.overview)}</p>
                                     </Col>
                                 </Row>
@@ -50,9 +40,7 @@ const DiscoveryInfo = props => (
                     }
                     return movies
                 })
-
-                :
-                <div>{'No Results'}</div>
+                : <div>{'No Results'}</div>
             }
         </Row>
     </div >
