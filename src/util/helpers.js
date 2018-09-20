@@ -8,9 +8,9 @@ export const getYear = date => {
 
 export const handleOverview = str => {
     if (str !== '') {
-        if (str.length > 250) {
+        if (str.length > 200) {
             return (
-                str.substring(0, 250) + '...'
+                str.substring(0, 200) + '...'
             )
         }
         return (

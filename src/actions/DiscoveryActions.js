@@ -22,7 +22,7 @@ export const fetch = payload => {
             dispatch({ type: type.ERRORS, errors: '', hasErrors: false })
         }
 
-        axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=${sortBy}&include_adult=false&include_video=false&with_genres=${g}&with_cast=${c}&with_keywords=${k}&year=${year}&page=${page}`)
+        axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${apiKey}&language=en-US&sort_by=${sortBy}&include_adult=false&include_video=false&with_genres=${g}&with_cast=${c}&with_keywords=${k}&primary_release_year=${year}&page=${page}`)
             .then(res => {
                 dispatch({
                     type: type.FETCH,
