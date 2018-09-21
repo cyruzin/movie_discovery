@@ -1,10 +1,10 @@
 import React from 'react'
 import { Route, Link, Switch } from 'react-router-dom'
 import { Layout, Menu, Icon } from 'antd';
-import Discovery from '../../modules/Discovery/components/Discovery'
-import About from '../../components/About'
+import Discovery from './Discovery/components/Discovery'
+import About from './About'
 
-const { SubMenu } = Menu;
+//const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
 const AppLayout = () => (
