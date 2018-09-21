@@ -12,7 +12,9 @@ const AppLayout = () => (
     <div>
         <Layout>
             <Header className="header">
-                <h3 style={{ color: '#FFF' }}>Movie Discovery</h3>
+                <h3 style={{ color: '#FFF' }}>
+                    <Link to='/'>Movie Discovery</Link>
+                </h3>
             </Header>
             <Layout>
                 <Sider

@@ -27,7 +27,6 @@ const DiscoveryFilter = props => (
                     onChange={props.handleYearChange}
                     size="large"
                     defaultValue={props.data.year}
-                    allowClear
                 >
                     {handleYears()}
                 </Select>
@@ -39,7 +38,6 @@ const DiscoveryFilter = props => (
                     placeholder="Select"
                     onChange={props.handleSortByChange}
                     size="large"
-                    allowClear
                     defaultValue={props.data.sortBy}
                 >
                     <Option value="popularity.desc">Popularity Descending</Option>
