@@ -1,0 +1,24 @@
+import React from 'react'
+
+const About = () => (
+    <div>
+        <h2>About</h2>
+        <p>What's up? This app is under development.</p>
+        <h3>Technologies</h3>
+        <ul>
+            <li>React</li>
+            <li>React Router</li>
+            <li>Redux</li>
+            <li>Redux Thunk</li>
+            <li>Ant Design</li>
+            <li>Axios</li>
+            <li>Lodash</li>
+        </ul>
+        <h3>API</h3>
+        <p>
+            This product uses the TMDb API but is not endorsed or certified by TMDb.
+    </p>
+    </div>
+)
+
+export default About

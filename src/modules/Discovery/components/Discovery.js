@@ -16,7 +16,7 @@ class Discovery extends Component {
         this.fetchKeywords = debounce(this.fetchKeywords, 800);
     }
 
-    componentDidMount = () => this.fetch()
+    componentDidMount = () => this.props.data.results.length === 0 ? this.fetch() : null
 
     fetch = () => this.props.actions.fetch(this.props.data)
 
@@ -53,6 +53,7 @@ class Discovery extends Component {
     render() {
         return (
             <div>
+                <h2>Discovery</h2>
                 <DiscoveryFilter
                     fetch={this.fetch}
                     fetchCast={this.fetchCast}
@@ -68,7 +69,13 @@ class Discovery extends Component {
                     <DiscoveryInfo
                         results={this.props.data.results}
                         data={this.props.data} />
-                    : <Icon type="loading" style={{ fontSize: '30px', color: '#40a9ff', margin: '20px 100px 10px 500px' }} />
+                    :
+                    <Icon type="loading"
+                        style={{
+                            fontSize: '30px',
+                            color: '#40a9ff',
+                            margin: '20px 100px 10px 500px'
+                        }} />
                 }
             </div>
 

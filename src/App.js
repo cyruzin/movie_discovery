@@ -2,9 +2,10 @@ import React, { Component } from 'react'
 import { Provider } from 'react-redux'
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import ReduxThunk from 'redux-thunk'
-import './App.css'
-import AppLayout from './layout/AppLayout'
+import AppLayout from './components/layout/AppLayout'
 import DiscoveryReducer from './modules/Discovery/reducers/DiscoveryReducer'
+import { BrowserRouter } from 'react-router-dom'
+import './App.css'
 
 const reducers = combineReducers({
   discovery: DiscoveryReducer
@@ -21,7 +22,9 @@ class App extends Component {
 
     return (
       <Provider store={store}>
-        <AppLayout />
+        <BrowserRouter>
+          <AppLayout />
+        </BrowserRouter>
       </Provider>
     )
   }
