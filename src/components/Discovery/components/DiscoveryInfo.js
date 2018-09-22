@@ -2,6 +2,7 @@ import React from 'react'
 import { Row, Col } from 'antd'
 import { getYear, handleOverview } from '../../../util/helpers'
 import { imgSize } from '../../../util/constants'
+import { Link } from 'react-router-dom'
 
 let movies
 
@@ -24,13 +25,15 @@ const DiscoveryInfo = props => (
                             <Col key={m.id} lg={12} xs={24} style={{ marginBottom: 20 }}>
                                 <Row>
                                     <Col lg={10}>
-                                        <img
-                                            src={`${imgSize.w185}${m.poster_path}`}
-                                            style={{ maxHeight: 240 }}
-                                            alt={m.title} />
+                                        <Link to={`/movie/${m.id}`}>
+                                            <img
+                                                src={`${imgSize.w185}${m.poster_path}`}
+                                                style={{ maxHeight: 240 }}
+                                                alt={m.title} />
+                                        </Link>
                                     </Col>
                                     <Col style={{ marginTop: 10 }} xs={24} lg={14}>
-                                        <h3>{m.title}</h3>
+                                        <Link to={`/movie/${m.id}`}> <h3>{m.title}</h3></Link>
                                         <p>{getYear(m.release_date)}</p>
                                         <p>{handleOverview(m.overview)}</p>
                                     </Col>

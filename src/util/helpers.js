@@ -6,11 +6,11 @@ export const getYear = date => {
     return ''
 }
 
-export const handleOverview = str => {
-    if (str !== '') {
-        if (str.length > 200) {
+export const handleOverview = (str, size = 200) => {
+    if (str !== '' && str !== undefined) {
+        if (str.length > size) {
             return (
-                str.substring(0, 200) + '...'
+                str.substring(0, size) + '...'
             )
         }
         return (

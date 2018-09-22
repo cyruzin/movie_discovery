@@ -2,9 +2,9 @@ import React from 'react'
 import { Route, Link, Switch } from 'react-router-dom'
 import { Layout, Menu, Icon } from 'antd';
 import Discovery from './Discovery/components/Discovery'
+import Movie from './Movie/components/Movie'
 import About from './About'
 
-//const { SubMenu } = Menu;
 const { Header, Content, Sider } = Layout;
 
 const AppLayout = () => (
@@ -12,7 +12,7 @@ const AppLayout = () => (
     <div>
         <Layout>
             <Header className="header">
-                <h3 style={{ color: '#FFF' }}>
+                <h3 style={{ color: '#FFF', textDecoration: 'none' }}>
                     <Link to='/'>Movie Discovery</Link>
                 </h3>
             </Header>
@@ -46,6 +46,7 @@ const AppLayout = () => (
                         <Switch>
                             <Route path='/' exact component={Discovery} />
                             <Route path='/about' component={About} />
+                            <Route path='/movie/:id' component={Movie} />
                         </Switch>
                     </Content>
                 </Layout>

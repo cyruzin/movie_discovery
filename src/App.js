@@ -1,15 +1,11 @@
 import React, { Component } from 'react'
 import { Provider } from 'react-redux'
-import { createStore, combineReducers, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware } from 'redux'
 import ReduxThunk from 'redux-thunk'
 import AppLayout from './components/AppLayout'
-import DiscoveryReducer from './components/Discovery/reducers/DiscoveryReducer'
+import reducers from './reducers'
 import { BrowserRouter } from 'react-router-dom'
 import './App.css'
-
-const reducers = combineReducers({
-  discovery: DiscoveryReducer
-})
 
 class App extends Component {
   render() {
