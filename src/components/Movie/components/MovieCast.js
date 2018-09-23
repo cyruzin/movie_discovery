@@ -3,7 +3,7 @@ import { Col } from 'antd'
 import { imgSize } from '../../../util/constants'
 
 const MovieCast = props => {
-    let cast = props.cast.filter(c => c.name !== '' && c.profile_path !== '')
+    let cast = props.cast.filter(c => c.name !== '' && c.profile_path !== null)
         .slice(0, 5).map(v => (
             <Col key={v.id} lg={3} xs={12} >
                 <img
