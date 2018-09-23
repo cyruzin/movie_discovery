@@ -90,7 +90,7 @@ describe('discovery actions', () => {
     })
 
     it('should create an action to change the sort by value', () => {
-        const value = 'popularity.desc'
+        const value = 'popularity.asc'
         const expectedAction = {
             type: types.SORT_BY,
             sortBy: value
