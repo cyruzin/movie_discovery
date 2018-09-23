@@ -1,9 +1,10 @@
-
 # movie_discovery
 
 A movie discovery app with React/Redux.  
 
-![Movie Filter](https://media.giphy.com/media/ncazsJG7RIjfMvf2bp/giphy.gif)
+<p align="center">
+  <img src="https://media.giphy.com/media/ncazsJG7RIjfMvf2bp/giphy.gif" target="_blank">
+</p>
 
 ## Installation
 
@@ -23,4 +24,3 @@ Check the app up and running: [Click here](https://feel-the-movies-e7ac1.firebas
 - React
 - React Router
 - Redux
-- Redux Thunk
