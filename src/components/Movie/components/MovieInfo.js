@@ -2,30 +2,17 @@ import React from 'react'
 import { getYear, handleOverview } from '../../../util/helpers'
 import { imgSize } from '../../../util/constants'
 import { Row, Col, Icon } from 'antd'
+import MovieCast from './MovieCast'
 
 
 const MovieInfo = props => {
 
     const {
         poster_path, title, release_date, overview,
-        runtime, genres
+        runtime, genres, videos
     } = props.data.results
 
     const genresList = genres.map(v => v.name).join(', ')
-
-    const renderCast = cast => {
-        let c = cast
-            .filter(c => c.name !== '' && c.profile_path !== '')
-            .slice(0, 5).map(v => (
-                <Col key={v.id} lg={3} xs={12}>
-                    <img
-                        src={`${imgSize.w92}${v.profile_path}`}
-                        alt={v.name} />
-                    <p><small>{v.name}</small> <br /> <small>{v.character}</small></p>
-                </Col>
-            ))
-        return c
-    }
 
     return (
         <Row>
@@ -39,8 +26,22 @@ const MovieInfo = props => {
                 </h1>
                 <p>
                     <small>
-                        <Icon type="calendar" theme="outlined" /> {getYear(release_date)} | <Icon type="tag" theme="outlined" /> {genresList} | <Icon type="clock-circle" theme="outlined" /> {runtime} minutes
-
+                        <span style={{ marginRight: 5 }}>
+                            <Icon type="calendar" theme="outlined" /> {getYear(release_date)}
+                        </span>
+                        <span style={{ marginRight: 5 }}>
+                            | <Icon type="tag" theme="outlined" /> {genresList}
+                        </span>
+                        <span style={{ marginRight: 5 }}>
+                            | <Icon type="clock-circle" theme="outlined" /> {runtime} minutes
+                        </span>
+                        {videos.results[0].key !== "" ?
+                            <span style={{ marginRight: 5 }}>
+                                | <Icon type="play-circle" theme="outlined" />
+                                <a href={`https://www.youtube.com/watch?v=${videos.results[0].key}`} target="_blank"> Watch Trailer</a>
+                            </span>
+                            : null
+                        }
                     </small>
                 </p>
                 <p>
@@ -49,8 +50,7 @@ const MovieInfo = props => {
 
             </Col>
             <h4>Top Billed Cast</h4>
-            {renderCast(props.data.cast)}
-
+            {<MovieCast cast={props.data.cast} />}
         </Row >
     )
 }

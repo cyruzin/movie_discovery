@@ -7,6 +7,7 @@ const imgSize = {
     w92: `${imgUrl}w92/`,
     w154: `${imgUrl}w154/`,
     w185: `${imgUrl}w185/`,
+    w276_and_h350_face: `${imgUrl}w276_and_h350_face`,
     w300: `${imgUrl}w300/`,
     w500: `${imgUrl}w500/`,
     w780: `${imgUrl}w780/`,

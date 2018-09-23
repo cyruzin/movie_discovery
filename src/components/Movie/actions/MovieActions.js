@@ -9,7 +9,7 @@ export const fetchMovie = ({ id, loaded }) => {
             dispatch({ type: types.LOADED_MOVIE, loaded: false })
         }
 
-        axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=en-US`)
+        axios.get(`https://api.themoviedb.org/3/movie/${id}?api_key=${apiKey}&language=en-US&append_to_response=videos`)
             .then(res => {
                 dispatch({ type: types.FETCH_MOVIE, payload: res.data })
                 dispatch({ type: types.LOADED_MOVIE, loaded: true })
