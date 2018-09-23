@@ -3,6 +3,7 @@ import types from '../types/MovieTypes'
 const initialState = {
     loaded: false,
     results: [],
+    cast: [],
     hasErrors: false,
     errors: ''
 }
@@ -18,6 +19,11 @@ export default (state = initialState, action) => {
             return {
                 ...state,
                 loaded: action.loaded
+            }
+        case types.FETCH_CREDITS:
+            return {
+                ...state,
+                cast: action.cast
             }
         case types.ERRORS_MOVIE:
             return {

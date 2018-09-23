@@ -37,12 +37,15 @@ const AppLayout = () => (
                     </Menu>
                 </Sider>
                 <Layout style={{ padding: '0 24px 24px' }}>
+
+
                     <Content style={{
                         background: '#fff',
                         padding: 24,
-                        margin: '40px 10px 10px 10px',
+                        margin: '20px 10px 10px 10px',
                         minHeight: 280
                     }}>
+
                         <Switch>
                             <Route path='/' exact component={Discovery} />
                             <Route path='/about' component={About} />

@@ -12,13 +12,14 @@ class Movie extends Component {
         const payload = { loaded, id }
 
         this.props.actions.fetchMovie(payload)
+        this.props.actions.fetchCredits(id)
     }
 
     render() {
         return (
             <div>
                 {this.props.data.loaded ?
-                    <MovieInfo data={this.props.data.results} />
+                    <MovieInfo data={this.props.data} />
                     : null}
             </div>
         )

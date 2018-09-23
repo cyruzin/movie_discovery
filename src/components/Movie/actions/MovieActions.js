@@ -20,3 +20,15 @@ export const fetchMovie = ({ id, loaded }) => {
     }
 
 }
+
+export const fetchCredits = id => {
+    return dispatch => {
+        axios.get(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${apiKey}`)
+            .then(res => {
+                dispatch({ type: types.FETCH_CREDITS, cast: res.data.cast })
+            })
+            .catch(err => {
+                dispatch({ type: types.ERRORS_MOVIE, hasErrors: true, errors: err })
+            })
+    }
+}
