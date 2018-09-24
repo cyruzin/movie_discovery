@@ -24,40 +24,49 @@ class Discovery extends Component {
 
     componentDidMount = () => this.props.data.results.length === 0 ? this.fetch() : null
 
+    //initial fetch 
     fetch = () => {
         this.props.actions.fetch(this.props.data)
         this.shouldMountNext()
     }
 
+    //fetch for cast
     fetchCast = value => this.props.actions.fetchCast(value)
 
+    //fetch for keywords
     fetchKeywords = value => this.props.actions.fetchKeywords(value)
 
+    //handler for keywords change
     handleKeywordsChange = value => {
         this.props.actions.keywords(value)
         this.fetch()
     }
 
+    //handler for cast change
     handleCastChange = value => {
         this.props.actions.cast(value)
         this.fetch()
     }
 
+    //handler for sort by change
     handleSortByChange = value => {
         this.props.actions.sortBy(value)
         this.fetch()
     }
 
+    //handler for year change
     handleYearChange = value => {
         this.props.actions.year(value)
         this.fetch()
     }
 
+    //handler for genres change
     handleGenresChange = value => {
         this.props.actions.genres(value)
         this.fetch()
     }
 
+    //handler for next button logic
     handleNextPage = () => {
         this.props.actions.loaded(false)
         this.props.actions.page(this.props.data.page + 1)
@@ -69,6 +78,7 @@ class Discovery extends Component {
         window.scrollTo(0, 0)
     }
 
+    //handler for previous button logic
     handlePrevPage = () => {
         this.props.actions.loaded(false)
         this.props.actions.page(this.props.data.page - 1)
@@ -80,12 +90,14 @@ class Discovery extends Component {
         window.scrollTo(0, 0);
     }
 
+    //check if necessary mount button next
     shouldMountNext = () => {
         if (this.props.data.lastPage !== true && this.props.data.results.length > 0) {
             this.props.actions.nextPage(true)
         }
     }
 
+    //check if is necessary render button next
     shouldRenderNext = () => {
         if (this.props.data.page !== this.props.data.totalPages) {
             this.props.actions.lastPage(false)
@@ -93,12 +105,14 @@ class Discovery extends Component {
         }
     }
 
+    //check if button previous should render
     shouldRenderPrev = () => {
         if (this.props.data.page > 1) {
             this.props.actions.prevPage(true)
         }
     }
 
+    //check if is page one
     isPageOne = () => {
         if (this.props.data.page === 1) {
             this.props.actions.prevPage(false)
@@ -106,6 +120,7 @@ class Discovery extends Component {
         }
     }
 
+    //check if reach last page
     isLastPage = () => {
         if (this.props.data.page === this.props.data.totalPages) {
             this.props.actions.lastPage(true)
@@ -115,7 +130,6 @@ class Discovery extends Component {
 
 
     render() {
-
         return (
             <div>
                 <h2>Discovery</h2>
@@ -130,23 +144,28 @@ class Discovery extends Component {
                     handleSortByChange={this.handleSortByChange}
                     data={this.props.data}
                 />
+
                 {this.props.data.loaded ?
                     <div>
                         <DiscoveryInfo
                             results={this.props.data.results}
-                            data={this.props.data} />
+                            data={this.props.data}
+                        />
                         <DiscoveryPagination
                             data={this.props.data}
                             nextPage={this.handleNextPage}
-                            prevPage={this.handlePrevPage} />
+                            prevPage={this.handlePrevPage}
+                        />
                     </div>
                     :
-                    <Icon type="loading"
+                    <Icon
+                        type="loading"
                         style={{
                             fontSize: '30px',
                             color: '#40a9ff',
                             margin: '20px 100px 10px 500px'
-                        }} />
+                        }}
+                    />
                 }
             </div>
 

@@ -29,7 +29,8 @@ const DiscoveryInfo = props => (
                                             <img
                                                 src={`${imgSize.w185}${m.poster_path}`}
                                                 style={{ maxHeight: 240 }}
-                                                alt={m.title} />
+                                                alt={m.title}
+                                            />
                                         </Link>
                                     </Col>
                                     <Col style={{ marginTop: 10 }} xs={24} lg={14}>

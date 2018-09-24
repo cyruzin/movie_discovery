@@ -9,6 +9,7 @@ const initialState = {
     errors: ''
 }
 
+//reducer tests
 describe('Movie Reducer', () => {
     it('Should return initial state', () => {
         expect(reducer(undefined, {})).toEqual(initialState)

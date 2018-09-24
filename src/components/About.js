@@ -17,13 +17,13 @@ const About = () => (
         </p>
         <h3>Technologies</h3>
         <ul>
+            <li>Ant Design</li>
+            <li>Axios</li>
+            <li>Lodash</li>
             <li>React</li>
             <li>React Router</li>
             <li>Redux</li>
             <li>Redux Thunk</li>
-            <li>Ant Design</li>
-            <li>Axios</li>
-            <li>Lodash</li>
         </ul>
         <h3>API</h3>
         <p>

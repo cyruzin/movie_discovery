@@ -24,6 +24,7 @@ const initialState = {
     errors: ''
 }
 
+//reducer test
 describe('Discovery Reducer', () => {
     it('Should return initial state', () => {
         expect(reducer(undefined, {})).toEqual(initialState)
@@ -79,7 +80,17 @@ describe('Discovery Reducer', () => {
     })
 })
 
+//actions tests
 describe('discovery actions', () => {
+    it('should create an action to change loaded value', () => {
+        const value = 1
+        const expectedAction = {
+            type: types.LOADED,
+            loaded: value,
+        }
+        expect(actions.loaded(value)).toEqual(expectedAction)
+    })
+
     it('should create an action to change the year value', () => {
         const value = 2017
         const expectedAction = {
