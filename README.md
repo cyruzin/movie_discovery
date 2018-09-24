@@ -24,3 +24,4 @@ Check the app up and running: [Click here](https://feel-the-movies-e7ac1.firebas
 - React
 - React Router
 - Redux
+- Redux Thunk
