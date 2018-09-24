@@ -10,9 +10,11 @@ import './App.css'
 class App extends Component {
   render() {
 
+    const devTool = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+
     const store = createStore(
       reducers,
-      window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
+      devTool,
       applyMiddleware(ReduxThunk)
     )
 

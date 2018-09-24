@@ -35,7 +35,7 @@ const MovieInfo = props => {
                         <span style={{ marginRight: 5 }}>
                             | <Icon type="clock-circle" theme="outlined" /> {runtime} minutes
                         </span>
-                        {videos.results[0].key !== "" ?
+                        {videos.results.length > 0 ?
                             <span style={{ marginRight: 5 }}>
                                 | <Icon type="play-circle" theme="outlined" />
                                 <a href={`https://www.youtube.com/watch?v=${videos.results[0].key}`} target="_blank"> Watch Trailer</a>
