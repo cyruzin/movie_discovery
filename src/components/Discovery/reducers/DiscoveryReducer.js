@@ -84,6 +84,26 @@ export default (state = initialState, action) => {
                 ...state,
                 loadedKeywords: action.loadedKeywords
             }
+        case type.PAGE:
+            return {
+                ...state,
+                page: action.page,
+            }
+        case type.NEXT_PAGE:
+            return {
+                ...state,
+                nextPage: action.nextPage
+            }
+        case type.PREV_PAGE:
+            return {
+                ...state,
+                prevPage: action.prevPage
+            }
+        case type.LAST_PAGE:
+            return {
+                ...state,
+                lastPage: action.lastPage
+            }
         case type.ERRORS:
             return {
                 ...state,

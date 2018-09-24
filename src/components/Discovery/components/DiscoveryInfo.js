@@ -43,7 +43,7 @@ const DiscoveryInfo = props => (
                     }
                     return movies
                 })
-                : <div>{'No Results'}</div>
+                : null
             }
         </Row>
     </div >

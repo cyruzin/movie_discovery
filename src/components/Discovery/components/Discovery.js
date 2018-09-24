@@ -6,6 +6,7 @@ import * as Actions from '../actions/DiscoveryActions'
 import debounce from 'lodash/debounce'
 import DiscoveryInfo from './DiscoveryInfo'
 import DiscoveryFilter from './DiscoveryFilter'
+import DiscoveryPagination from './DiscoveryPagination'
 
 class Discovery extends Component {
 
@@ -14,11 +15,19 @@ class Discovery extends Component {
         this.fetch = debounce(this.fetch, 800)
         this.fetchCast = debounce(this.fetchCast, 800);
         this.fetchKeywords = debounce(this.fetchKeywords, 800);
+        this.shouldMountNext = debounce(this.shouldMountNext, 800);
+        this.shouldRenderNext = debounce(this.shouldRenderNext, 800);
+        this.shouldRenderPrev = debounce(this.shouldRenderPrev, 800);
+        this.isPageOne = debounce(this.isPageOne, 800);
+        this.isLastPage = debounce(this.isLastPage, 800);
     }
 
     componentDidMount = () => this.props.data.results.length === 0 ? this.fetch() : null
 
-    fetch = () => this.props.actions.fetch(this.props.data)
+    fetch = () => {
+        this.props.actions.fetch(this.props.data)
+        this.shouldMountNext()
+    }
 
     fetchCast = value => this.props.actions.fetchCast(value)
 
@@ -49,8 +58,64 @@ class Discovery extends Component {
         this.fetch()
     }
 
+    handleNextPage = () => {
+        this.props.actions.loaded(false)
+        this.props.actions.page(this.props.data.page + 1)
+
+        this.fetch()
+        this.isLastPage()
+        this.shouldRenderPrev()
+
+        window.scrollTo(0, 0)
+    }
+
+    handlePrevPage = () => {
+        this.props.actions.loaded(false)
+        this.props.actions.page(this.props.data.page - 1)
+
+        this.fetch()
+        this.shouldRenderNext()
+        this.isPageOne()
+
+        window.scrollTo(0, 0);
+    }
+
+    shouldMountNext = () => {
+        if (this.props.data.lastPage !== true && this.props.data.results.length > 0) {
+            this.props.actions.nextPage(true)
+        }
+    }
+
+    shouldRenderNext = () => {
+        if (this.props.data.page !== this.props.data.totalPages) {
+            this.props.actions.lastPage(false)
+            this.props.actions.nextPage(true)
+        }
+    }
+
+    shouldRenderPrev = () => {
+        if (this.props.data.page > 1) {
+            this.props.actions.prevPage(true)
+        }
+    }
+
+    isPageOne = () => {
+        if (this.props.data.page === 1) {
+            this.props.actions.prevPage(false)
+            this.props.actions.nextPage(true)
+        }
+    }
+
+    isLastPage = () => {
+        if (this.props.data.page === this.props.data.totalPages) {
+            this.props.actions.lastPage(true)
+            this.props.actions.nextPage(false)
+        }
+    }
+
 
     render() {
+
         return (
             <div>
                 <h2>Discovery</h2>
@@ -66,9 +131,15 @@ class Discovery extends Component {
                     data={this.props.data}
                 />
                 {this.props.data.loaded ?
-                    <DiscoveryInfo
-                        results={this.props.data.results}
-                        data={this.props.data} />
+                    <div>
+                        <DiscoveryInfo
+                            results={this.props.data.results}
+                            data={this.props.data} />
+                        <DiscoveryPagination
+                            data={this.props.data}
+                            nextPage={this.handleNextPage}
+                            prevPage={this.handlePrevPage} />
+                    </div>
                     :
                     <Icon type="loading"
                         style={{

@@ -22,6 +22,7 @@ const DiscoveryFilter = props => (
             <Col lg={3} xs={24}>
                 <span><small>Year</small></span>
                 <Select
+                    allowClear
                     style={{ width: '100%' }}
                     placeholder="Select"
                     onChange={props.handleYearChange}

@@ -99,3 +99,23 @@ export const cast = value => {
 export const keywords = value => {
     return { type: type.KEYWORDS_VALUE, keywordsValue: value, keywords: [] }
 }
+
+export const page = value => {
+    return { type: type.PAGE, page: value }
+}
+
+export const nextPage = (value = false) => {
+    return { type: type.NEXT_PAGE, nextPage: value }
+}
+
+export const prevPage = (value = false) => {
+    return { type: type.PREV_PAGE, prevPage: value }
+}
+
+export const lastPage = value => {
+    return { type: type.LAST_PAGE, lastPage: value }
+}
+
+export const loaded = value => {
+    return { type: type.LOADED, loaded: value }
+}
