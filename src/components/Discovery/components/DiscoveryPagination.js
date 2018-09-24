@@ -12,7 +12,7 @@ const DiscoveryPagination = props => {
                             type='primary'
                             icon='arrow-left'
                             shape='circle'
-                            style={{ fontSize: 24, marginRight: 20 }}
+                            style={{ fontSize: 20, marginRight: 20 }}
                             theme="outlined" />
                         :
                         null
@@ -23,7 +23,7 @@ const DiscoveryPagination = props => {
                             type='primary'
                             icon='arrow-right'
                             shape='circle'
-                            style={{ fontSize: 24 }}
+                            style={{ fontSize: 20 }}
                             theme="outlined" />
                         :
                         null

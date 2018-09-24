@@ -83,7 +83,7 @@ describe('Discovery Reducer', () => {
 //actions tests
 describe('discovery actions', () => {
     it('should create an action to change loaded value', () => {
-        const value = 1
+        const value = true
         const expectedAction = {
             type: types.LOADED,
             loaded: value,
@@ -136,5 +136,41 @@ describe('discovery actions', () => {
             keywords: []
         }
         expect(actions.keywords(value)).toEqual(expectedAction)
+    })
+
+    it('should create an action to change the page value', () => {
+        const value = 2
+        const expectedAction = {
+            type: types.PAGE,
+            page: value
+        }
+        expect(actions.page(value)).toEqual(expectedAction)
+    })
+
+    it('should create an action to change the next page value', () => {
+        const value = false
+        const expectedAction = {
+            type: types.NEXT_PAGE,
+            nextPage: value
+        }
+        expect(actions.nextPage(value)).toEqual(expectedAction)
+    })
+
+    it('should create an action to change the previous page value', () => {
+        const value = true
+        const expectedAction = {
+            type: types.PREV_PAGE,
+            prevPage: value
+        }
+        expect(actions.prevPage(value)).toEqual(expectedAction)
+    })
+
+    it('should create an action to change the last page value', () => {
+        const value = true
+        const expectedAction = {
+            type: types.LAST_PAGE,
+            lastPage: value
+        }
+        expect(actions.lastPage(value)).toEqual(expectedAction)
     })
 })

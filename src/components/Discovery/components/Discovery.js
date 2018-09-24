@@ -71,9 +71,9 @@ class Discovery extends Component {
         this.props.actions.loaded(false)
         this.props.actions.page(this.props.data.page + 1)
 
-        this.fetch()
         this.isLastPage()
         this.shouldRenderPrev()
+        this.fetch()
 
         window.scrollTo(0, 0)
     }
@@ -83,9 +83,9 @@ class Discovery extends Component {
         this.props.actions.loaded(false)
         this.props.actions.page(this.props.data.page - 1)
 
-        this.fetch()
         this.shouldRenderNext()
         this.isPageOne()
+        this.fetch()
 
         window.scrollTo(0, 0);
     }

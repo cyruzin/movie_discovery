@@ -80,6 +80,10 @@ export const fetchKeywords = payload => {
     }
 }
 
+export const loaded = value => {
+    return { type: type.LOADED, loaded: value }
+}
+
 export const year = value => {
     return { type: type.YEAR, year: value }
 }
@@ -114,8 +118,4 @@ export const prevPage = (value = false) => {
 
 export const lastPage = value => {
     return { type: type.LAST_PAGE, lastPage: value }
-}
-
-export const loaded = value => {
-    return { type: type.LOADED, loaded: value }
 }
