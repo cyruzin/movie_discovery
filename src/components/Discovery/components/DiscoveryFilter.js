@@ -55,6 +55,7 @@ const DiscoveryFilter = props => (
                 <span><small>Genres</small></span>
                 <Select
                     allowClear
+                    value={props.data.genres}
                     mode="tags"
                     placeholder="Select Genres"
                     size="large"
