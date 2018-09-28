@@ -44,7 +44,8 @@ const DiscoveryInfo = props => (
                     }
                     return movies
                 })
-                : null
+                :
+                <div><p style={{ textAlign: 'center' }}>No Results</p></div>
             }
         </Row>
     </div >
