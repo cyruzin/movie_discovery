@@ -1,7 +1,12 @@
 import React from 'react'
 import { getYear, handleOverview } from '../../../util/helpers'
 import { imgSize } from '../../../util/constants'
-import { Row, Col, Icon } from 'antd'
+import Row from 'antd/lib/row'
+import Col from 'antd/lib/col'
+import Icon from 'antd/lib/icon'
+import 'antd/lib/row/style/css'
+import 'antd/lib/col/style/css'
+import 'antd/lib/icon/style/css'
 import MovieCast from './MovieCast'
 
 

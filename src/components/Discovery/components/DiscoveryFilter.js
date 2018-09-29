@@ -1,5 +1,12 @@
 import React from 'react'
-import { Row, Col, Select, Spin } from 'antd'
+import Row from 'antd/lib/row'
+import Col from 'antd/lib/col'
+import Select from 'antd/lib/select'
+import Spin from 'antd/lib/spin'
+import 'antd/lib/row/style/css'
+import 'antd/lib/col/style/css'
+import 'antd/lib/select/style/css'
+import 'antd/lib/spin/style/css'
 
 const Option = Select.Option;
 

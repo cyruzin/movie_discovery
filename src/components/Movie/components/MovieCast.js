@@ -1,5 +1,7 @@
 import React from 'react'
-import { Col } from 'antd'
+import Col from 'antd/lib/col'
+import 'antd/lib/col/style/css'
+
 import { imgSize } from '../../../util/constants'
 
 const MovieCast = props => {

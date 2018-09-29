@@ -1,6 +1,11 @@
 import React from 'react'
 import { Route, Link, Switch } from 'react-router-dom'
-import { Layout, Menu, Icon } from 'antd';
+import Layout from 'antd/lib/layout'
+import Menu from 'antd/lib/menu'
+import Icon from 'antd/lib/icon'
+import 'antd/lib/icon/style/css'
+import 'antd/lib/layout/style/css'
+import 'antd/lib/menu/style/css'
 import Discovery from './Discovery/components/Discovery'
 import Movie from './Movie/components/Movie'
 import About from './About'

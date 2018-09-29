@@ -1,5 +1,10 @@
 import React from 'react'
-import { Row, Col, Button } from 'antd'
+import Row from 'antd/lib/row'
+import Col from 'antd/lib/col'
+import Button from 'antd/lib/button'
+import 'antd/lib/row/style/css'
+import 'antd/lib/col/style/css'
+import 'antd/lib/button/style/css'
 
 const DiscoveryPagination = props => {
     return (
