@@ -3,3 +3,39 @@
 .App {
   text-align: center;
 }
+
+.transition-enter {
+  transform: translate(100%);
+}
+
+.transition-enter.transition-enter-active {
+  transform: translate(0%);
+  transition: transform 1000ms ease-in-out;
+}
+
+.transition-leave {
+  transform: translate(0%);
+}
+
+.transition-leave.transition-leave-active {
+  transform: translate(-100%);
+  transition: transform 1000ms ease-in-out;
+}
+
+.transition-appear {
+  transform: translate(100%);
+}
+
+.transition-appear.transition-appear-active {
+  transform: translate(0%);
+  transition: transform 1000ms ease-in-out;
+}
+
+.transition-appear {
+  transform: translate(100%);
+}
+
+.transition-appear.transition-appear-active {
+  transform: translate(0%);
+  transition: transform 1000ms ease-in-out;
+}

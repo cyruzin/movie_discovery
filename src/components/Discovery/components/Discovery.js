@@ -7,6 +7,7 @@ import debounce from 'lodash/debounce'
 import DiscoveryInfo from './DiscoveryInfo'
 import DiscoveryFilter from './DiscoveryFilter'
 import DiscoveryPagination from './DiscoveryPagination'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 class Discovery extends Component {
 
@@ -20,6 +21,7 @@ class Discovery extends Component {
         this.shouldRenderPrev = debounce(this.shouldRenderPrev, 800);
         this.isPageOne = debounce(this.isPageOne, 800);
         this.isLastPage = debounce(this.isLastPage, 800);
+        this.filterChanged = debounce(this.filterChanged, 800);
     }
 
     componentDidMount = () => this.props.data.results.length === 0 ? this.fetch() : null
@@ -38,30 +40,35 @@ class Discovery extends Component {
 
     //handler for keywords change
     handleKeywordsChange = value => {
+        this.filterChanged()
         this.props.actions.keywords(value)
         this.fetch()
     }
 
     //handler for cast change
     handleCastChange = value => {
+        this.filterChanged()
         this.props.actions.cast(value)
         this.fetch()
     }
 
     //handler for sort by change
     handleSortByChange = value => {
+        this.filterChanged()
         this.props.actions.sortBy(value)
         this.fetch()
     }
 
     //handler for year change
     handleYearChange = value => {
+        this.filterChanged()
         this.props.actions.year(value)
         this.fetch()
     }
 
     //handler for genres change
     handleGenresChange = value => {
+        this.filterChanged()
         this.props.actions.genres(value)
         this.fetch()
     }
@@ -128,6 +135,15 @@ class Discovery extends Component {
         }
     }
 
+    //checks when filter change
+    filterChanged = () => {
+        this.props.actions.page(1)
+        this.isPageOne()
+        this.isLastPage()
+        this.shouldRenderNext()
+        this.shouldRenderPrev()
+    }
+
 
     render() {
         return (
@@ -146,17 +162,25 @@ class Discovery extends Component {
                 />
 
                 {this.props.data.loaded ?
-                    <div>
-                        <DiscoveryInfo
-                            results={this.props.data.results}
-                            data={this.props.data}
-                        />
-                        <DiscoveryPagination
-                            data={this.props.data}
-                            nextPage={this.handleNextPage}
-                            prevPage={this.handlePrevPage}
-                        />
-                    </div>
+                    <ReactCSSTransitionGroup
+                        transitionName="transition"
+                        transitionAppear={true}
+                        transitionAppearTimeout={1000}
+                        transitionEnter={false}
+                        transitionLeave={false}>
+                        <div key={Date.now()}>
+                            <DiscoveryInfo
+                                results={this.props.data.results}
+                                data={this.props.data}
+                            />
+
+                            <DiscoveryPagination
+                                data={this.props.data}
+                                nextPage={this.handleNextPage}
+                                prevPage={this.handlePrevPage}
+                            />
+                        </div>
+                    </ReactCSSTransitionGroup>
                     :
                     <Icon
                         type="loading"

@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import * as Actions from '../actions/MovieActions'
 import MovieInfo from './MovieInfo'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 class Movie extends Component {
 
@@ -18,9 +19,19 @@ class Movie extends Component {
     render() {
         return (
             <div>
-                {this.props.data.loaded ?
-                    <MovieInfo data={this.props.data} />
-                    : null}
+                <ReactCSSTransitionGroup
+                    transitionName="transition"
+                    transitionEnterTimeout={1000}
+                    transitionLeaveTimeout={1000}>
+
+                    {this.props.data.loaded ?
+                        <MovieInfo key={this.props.match.params.id}
+                            data={this.props.data} />
+                        :
+                        null
+                    }
+
+                </ReactCSSTransitionGroup>
             </div>
         )
     }
