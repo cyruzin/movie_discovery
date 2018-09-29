@@ -20,9 +20,9 @@ class Movie extends Component {
         return (
             <div>
                 <ReactCSSTransitionGroup
-                    transitionName="transition"
+                    transitionName="smooth"
                     transitionEnterTimeout={1000}
-                    transitionLeaveTimeout={1000}>
+                    transitionLeave={false}>
 
                     {this.props.data.loaded ?
                         <MovieInfo key={this.props.match.params.id}

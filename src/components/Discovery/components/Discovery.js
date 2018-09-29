@@ -164,7 +164,7 @@ class Discovery extends Component {
 
                 {this.props.data.loaded ?
                     <ReactCSSTransitionGroup
-                        transitionName="transition"
+                        transitionName="smooth"
                         transitionAppear={true}
                         transitionAppearTimeout={1000}
                         transitionEnter={false}

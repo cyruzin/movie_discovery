@@ -1,12 +1,15 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import { getYear, handleOverview } from '../../../util/helpers'
 import { imgSize } from '../../../util/constants'
 import Row from 'antd/lib/row'
 import Col from 'antd/lib/col'
 import Icon from 'antd/lib/icon'
+import Breadcrumb from 'antd/lib/breadcrumb'
 import 'antd/lib/row/style/css'
 import 'antd/lib/col/style/css'
 import 'antd/lib/icon/style/css'
+import 'antd/lib/breadcrumb/style/css'
 import MovieCast from './MovieCast'
 
 
@@ -21,6 +24,16 @@ const MovieInfo = props => {
 
     return (
         <Row>
+            <Col lg={24} xs={24}>
+                <Breadcrumb>
+                    <Breadcrumb.Item>
+                        <Link to='/'>
+                            <Icon type="arrow-left" style={{ fontSize: 24, marginBottom: 10 }} />
+                        </Link>
+                    </Breadcrumb.Item>
+                </Breadcrumb>
+            </Col>
+
             <Col lg={8} xs={24}>
                 <img src={`${imgSize.w300}${poster_path}`}
                     alt={title} />
