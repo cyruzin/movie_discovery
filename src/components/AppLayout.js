@@ -9,6 +9,7 @@ import 'antd/lib/menu/style/css'
 import Discovery from './Discovery/components/Discovery'
 import Movie from './Movie/components/Movie'
 import About from './About'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 const { Header, Content, Sider } = Layout;
 
@@ -43,7 +44,6 @@ const AppLayout = () => (
                 </Sider>
                 <Layout style={{ padding: '0 24px 24px' }}>
 
-
                     <Content style={{
                         background: '#fff',
                         padding: 24,
@@ -51,11 +51,18 @@ const AppLayout = () => (
                         minHeight: 280
                     }}>
 
-                        <Switch>
-                            <Route path='/' exact component={Discovery} />
-                            <Route path='/about' component={About} />
-                            <Route path='/movie/:id' component={Movie} />
-                        </Switch>
+                        <ReactCSSTransitionGroup
+                            transitionName="smooth"
+                            transitionEnterTimeout={1000}
+                            transitionLeaveTimeout={1000}
+                        >
+                            <Switch key={Date.now()}>
+                                <Route path='/' exact component={Discovery} />
+                                <Route path='/about' component={About} />
+                                <Route path='/movie/:id' component={Movie} />
+                                <Route render={() => <div><h3>Page Not Found</h3></div>} />
+                            </Switch>
+                        </ReactCSSTransitionGroup>
                     </Content>
                 </Layout>
             </Layout>
