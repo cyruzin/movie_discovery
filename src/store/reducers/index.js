@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux'
-import DiscoveryReducer from '../components/Discovery/reducers/DiscoveryReducer'
-import MovieReducer from '../components/Movie/reducers/MovieReducer'
+import DiscoveryReducer from './DiscoveryReducer'
+import MovieReducer from './MovieReducer'
 
 const reducers = combineReducers({
     discovery: DiscoveryReducer,

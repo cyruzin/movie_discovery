@@ -3,12 +3,11 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import Icon from 'antd/lib/icon'
 import 'antd/lib/icon/style/css'
-import * as Actions from '../actions/DiscoveryActions'
+import * as Actions from '../../store/actions/DiscoveryActions'
 import debounce from 'lodash/debounce'
 import DiscoveryInfo from './DiscoveryInfo'
 import DiscoveryFilter from './DiscoveryFilter'
 import DiscoveryPagination from './DiscoveryPagination'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
 
 class Discovery extends Component {
 
@@ -163,25 +162,18 @@ class Discovery extends Component {
                 />
 
                 {this.props.data.loaded ?
-                    <ReactCSSTransitionGroup
-                        transitionName="smooth"
-                        transitionAppear={true}
-                        transitionAppearTimeout={1000}
-                        transitionEnter={false}
-                        transitionLeave={false}>
-                        <div key={Date.now()}>
-                            <DiscoveryInfo
-                                results={this.props.data.results}
-                                data={this.props.data}
-                            />
+                    <div>
+                        <DiscoveryInfo
+                            results={this.props.data.results}
+                            data={this.props.data}
+                        />
 
-                            <DiscoveryPagination
-                                data={this.props.data}
-                                nextPage={this.handleNextPage}
-                                prevPage={this.handlePrevPage}
-                            />
-                        </div>
-                    </ReactCSSTransitionGroup>
+                        <DiscoveryPagination
+                            data={this.props.data}
+                            nextPage={this.handleNextPage}
+                            prevPage={this.handlePrevPage}
+                        />
+                    </div>
                     :
                     <Icon
                         type="loading"

@@ -3,8 +3,8 @@ import Row from 'antd/lib/row'
 import Col from 'antd/lib/col'
 import 'antd/lib/row/style/css'
 import 'antd/lib/col/style/css'
-import { getYear, handleOverview } from '../../../util/helpers'
-import { imgSize } from '../../../util/constants'
+import { getYear, handleOverview } from '../../util/helpers'
+import { imgSize } from '../../util/constants'
 import { Link } from 'react-router-dom'
 
 let movies

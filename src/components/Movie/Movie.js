@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import * as Actions from '../actions/MovieActions'
+import * as Actions from '../../store/actions/MovieActions'
 import MovieInfo from './MovieInfo'
 
 class Movie extends Component {

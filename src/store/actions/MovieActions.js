@@ -1,6 +1,6 @@
 import axios from 'axios'
 import type from '../types/MovieTypes'
-import { apiKey } from '../../../util/constants'
+import { apiKey } from '../../util/constants'
 
 export const fetchMovie = ({ id, loaded }) => {
     return dispatch => {
