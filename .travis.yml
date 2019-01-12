@@ -12,5 +12,6 @@ node_js:
   - npm install
   - npm test -- --coverage
 
+# coveralls script
   after_script: 
   - npm run coveralls
