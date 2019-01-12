@@ -1,5 +1,5 @@
-import reducer from '../reducers/MovieReducer'
-import types from '../types/MovieTypes'
+import reducer from '../../store/reducers/MovieReducer'
+import types from '../../store/types/MovieTypes'
 
 const initialState = {
     loaded: false,

@@ -1,6 +1,6 @@
-import reducer from '../reducers/DiscoveryReducer'
-import types from '../types/DiscoveryTypes'
-import * as actions from '../actions/DiscoveryActions'
+import reducer from '../../store/reducers/DiscoveryReducer'
+import types from '../../store/types/DiscoveryTypes'
+import * as actions from '../../store/actions/DiscoveryActions'
 
 const initialState = {
     loaded: false,
