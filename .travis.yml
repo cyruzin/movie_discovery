@@ -1,5 +1,6 @@
 language: node_js
 
+# latest stable version
 node_js:
   - "stable"
 
