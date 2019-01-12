@@ -1,4 +1,7 @@
-# movie_discovery
+# Movie Discovery
+
+[![Build status](https://ci.appveyor.com/api/projects/status/uafuder2b76vdb4t?svg=true)](https://ci.appveyor.com/project/cyruzin/movie-discovery)
+
 
 A movie discovery app with React/Redux.  
 
