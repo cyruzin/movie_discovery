@@ -1,16 +1,19 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+
 import Icon from 'antd/lib/icon'
 import 'antd/lib/icon/style/css'
-import * as Actions from '../../store/actions/DiscoveryActions'
+
 import debounce from 'lodash/debounce'
+
+import * as Actions from '../../store/actions/DiscoveryActions'
+
 import DiscoveryInfo from './DiscoveryInfo'
 import DiscoveryFilter from './DiscoveryFilter'
 import DiscoveryPagination from './DiscoveryPagination'
 
 class Discovery extends Component {
-
     constructor(props) {
         super(props)
         this.fetch = debounce(this.fetch, 800)
@@ -145,7 +148,7 @@ class Discovery extends Component {
     }
 
 
-    render() {
+    render () {
         return (
             <div>
                 <h2>Discovery</h2>
