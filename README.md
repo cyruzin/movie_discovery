@@ -2,12 +2,7 @@
 
 [![Build status](https://ci.appveyor.com/api/projects/status/uafuder2b76vdb4t?svg=true)](https://ci.appveyor.com/project/cyruzin/movie-discovery)
 
-
-A movie discovery app with React/Redux.  
-
-<p align="center">
-  <img src="https://media.giphy.com/media/ncazsJG7RIjfMvf2bp/giphy.gif" target="_blank">
-</p>
+A movie discovery app with React/Redux.
 
 ## Installation
 
