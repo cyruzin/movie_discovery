@@ -1,42 +1,43 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+
 import * as Actions from '../../store/actions/MovieActions'
+
 import MovieInfo from './MovieInfo'
 
-class Movie extends Component {
-
-    componentDidMount = () => {
+class Movie extends PureComponent {
+    componentDidMount () {
         const { loaded } = this.props.data
         const { id } = this.props.match.params
         const payload = { loaded, id }
+        const { fetchMovie, fetchCredits } = this.props.actions
 
-        this.props.actions.fetchMovie(payload)
-        this.props.actions.fetchCredits(id)
+        fetchMovie(payload)
+        fetchCredits(id)
     }
 
-    render() {
+    render () {
+        const { data } = this.props
+
         return (
-            <div>
-                {this.props.data.loaded ?
-                    <MovieInfo data={this.props.data} />
-                    :
-                    null
-                }
-            </div>
+            <>
+                {data.loaded && <MovieInfo data={data} />}
+            </>
         )
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        data: state.movie
-    }
-}
+const mapStateToProps = state => ({
+    data: state.movie
+})
 
 const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators(Actions, dispatch)
 })
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(Movie)
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Movie)

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { Provider } from 'react-redux'
 import {
   createStore,
@@ -10,21 +10,15 @@ import { BrowserRouter } from 'react-router-dom'
 
 import reducers from './store/reducers'
 
-import AppLayout from './components/AppLayout'
+import AppLayout from './components/AppLayout/AppLayout'
 
 import './App.css'
 
 
-class App extends Component {
+class App extends PureComponent {
   render () {
-
     const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
-
-    const store = createStore(
-      reducers,
-      {},
-      composeEnhancers(applyMiddleware(ReduxThunk))
-    )
+    const store = createStore(reducers, {}, composeEnhancers(applyMiddleware(ReduxThunk)))
 
     return (
       <Provider store={store}>

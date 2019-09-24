@@ -1,4 +1,5 @@
 import React from 'react'
+
 import Row from 'antd/lib/row'
 import Col from 'antd/lib/col'
 import Select from 'antd/lib/select'
@@ -18,13 +19,11 @@ const handleYears = (range = 1900) => {
         years.push(i);
     }
 
-    return years.map((v, i) => {
-        return <Option key={i} value={v}>{v}</Option>
-    })
+    return years.map((v, i) => <Option key={i} value={v}>{v}</Option>)
 }
 
 const DiscoveryFilter = props => (
-    <div>
+    <>
         <Row gutter={16} style={{ margin: '20px 0px 20px 0px' }}>
             <Col lg={3} xs={24}>
                 <span><small>Year</small></span>
@@ -130,7 +129,7 @@ const DiscoveryFilter = props => (
                 </Select>
             </Col>
         </Row>
-    </div>
+    </>
 )
 
 export default DiscoveryFilter

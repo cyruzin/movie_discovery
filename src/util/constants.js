@@ -1,6 +1,6 @@
-const apiKey = '9aca69849a23528a419aea463387945f'
+const apiKey = process.env.REACT_APP_TMDB_API_KEY
 
-const imgUrl = 'https://image.tmdb.org/t/p/'
+const imgUrl = process.env.REACT_APP_TMDB_IMG_URL
 
 const imgSize = {
     w45: `${imgUrl}w45/`,

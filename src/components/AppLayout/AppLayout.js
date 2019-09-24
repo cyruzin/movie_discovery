@@ -1,19 +1,24 @@
 import React from 'react'
-import { Route, Link, Switch } from 'react-router-dom'
+import {
+    Route,
+    Link,
+    Switch
+} from 'react-router-dom'
+
 import Layout from 'antd/lib/layout'
 import Menu from 'antd/lib/menu'
 import Icon from 'antd/lib/icon'
 import 'antd/lib/icon/style/css'
 import 'antd/lib/layout/style/css'
 import 'antd/lib/menu/style/css'
-import Discovery from './Discovery/Discovery'
-import Movie from './Movie/Movie'
-import About from './About'
+
+import Discovery from '../Discovery/Discovery'
+import Movie from '../Movie/Movie'
+import About from '../About/About'
 
 const { Header, Content, Sider } = Layout;
 
 const AppLayout = () => (
-
     <div>
         <Layout>
             <Header className="header">

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { PureComponent } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
@@ -13,7 +13,7 @@ import DiscoveryInfo from './DiscoveryInfo'
 import DiscoveryFilter from './DiscoveryFilter'
 import DiscoveryPagination from './DiscoveryPagination'
 
-class Discovery extends Component {
+class Discovery extends PureComponent {
     constructor(props) {
         super(props)
         this.fetch = debounce(this.fetch, 800)
@@ -147,10 +147,9 @@ class Discovery extends Component {
         this.shouldRenderPrev()
     }
 
-
     render () {
         return (
-            <div>
+            <>
                 <h2>Discovery</h2>
                 <DiscoveryFilter
                     fetch={this.fetch}
@@ -163,14 +162,12 @@ class Discovery extends Component {
                     handleSortByChange={this.handleSortByChange}
                     data={this.props.data}
                 />
-
                 {this.props.data.loaded ?
                     <div>
                         <DiscoveryInfo
                             results={this.props.data.results}
                             data={this.props.data}
                         />
-
                         <DiscoveryPagination
                             data={this.props.data}
                             nextPage={this.handleNextPage}
@@ -187,20 +184,21 @@ class Discovery extends Component {
                         }}
                     />
                 }
-            </div>
+            </>
 
         )
     }
 }
 
-const mapStateToProps = state => {
-    return {
-        data: state.discovery
-    }
-}
+const mapStateToProps = state => ({
+    data: state.discovery
+})
 
 const mapDispatchToProps = dispatch => ({
     actions: bindActionCreators(Actions, dispatch)
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(Discovery)
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Discovery)
